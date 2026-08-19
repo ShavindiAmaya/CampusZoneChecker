@@ -19,10 +19,9 @@ class MainActivity : AppCompatActivity() {
 
     // 1. Add hardcoded constants for reference coordinates and zone radius.
     // Replace these values with your campus, office, or home coordinates.
-    private val REFERENCE_LATITUDE = 37.4220 // Example: Googleplex Latitude
-    private val REFERENCE_LONGITUDE = -122.0841 // Example: Googleplex Longitude
+    private val REFERENCE_LATITUDE = 6.9727071 // DIM Building Latitude
+    private val REFERENCE_LONGITUDE = 79.9157605 // DIM Building Longitude
     private val ZONE_RADIUS_METERS = 100.0 // 100 meters radius
-
     // 2. Fused Location Provider Client: The main entry point for interacting with the location services.
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -140,8 +139,10 @@ class MainActivity : AppCompatActivity() {
         // radius comparison: Compare calculated distance with our hardcoded radius.
         if (distance <= ZONE_RADIUS_METERS) {
             statusText.text = "Status: Inside Zone"
+            findViewById<android.view.View>(R.id.rootLayout).setBackgroundColor(android.graphics.Color.GREEN)
         } else {
             statusText.text = "Status: Outside Zone"
+            findViewById<android.view.View>(R.id.rootLayout).setBackgroundColor(android.graphics.Color.RED)
         }
     }
 
